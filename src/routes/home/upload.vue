@@ -28,7 +28,11 @@
             </el-select>
           </el-form-item>
           <el-form-item label="类目选择">
-            <el-cascader class="w1000" :options="getCategoryData" v-model="item.category" :props="propsList" change-on-select></el-cascader>
+            <el-cascader class="w1000" :options="getCategoryData"
+              v-model="item.category"
+              change-on-select
+              :props="propsList">
+            </el-cascader>
           </el-form-item>
           <el-form-item label="文章标签">
             <el-input class="w1000" v-model="item.tags" placeholder=""></el-input>
@@ -127,7 +131,7 @@ export default {
       })
     },
     getgetCategoryData () {
-      this.$service.category.getCategoryList({
+      this.$service.category.getUploadCategoryList({
         category: 0,
         level: 100
       }).then(res => {

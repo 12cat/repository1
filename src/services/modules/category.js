@@ -7,6 +7,8 @@ export default {
   pathList: [
     // 获取类目列表
     {key: 'getCategoryList', url: 'category/getCategoryList'},
+    // 获取类目列表
+    {key: 'getUploadCategoryList', url: 'category/getUploadCategoryList'},
     // 修改类目
     {key: 'modifyCategory', url: 'category/modifyCategory'},
     // 获取配置类目

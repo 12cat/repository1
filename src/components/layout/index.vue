@@ -21,14 +21,12 @@
             <span class="el-dropdown-link">
               <span class="user">
                 <span class="img"></span>
-                <span v-show="!userName" class="text">未登录</span>
-                <span v-show="userName" class="text">{{ userName }}</span>
+                <span class="text">{{ userName }}</span>
               </span>
             </span>
             <el-dropdown-menu slot="dropdown">
-              <el-dropdown-item v-show="!userName" command="a">登录</el-dropdown-item>
-              <el-dropdown-item v-show="userName" command="b">我的主页</el-dropdown-item>
-              <el-dropdown-item v-show="userName" command="c">退出登录</el-dropdown-item>
+              <el-dropdown-item command="b">我的主页</el-dropdown-item>
+              <el-dropdown-item command="c">退出登录</el-dropdown-item>
             </el-dropdown-menu>
           </el-dropdown>
         </el-row>
@@ -224,10 +222,11 @@ export default {
     height: 60px;
     width: 40px;
     right: -45px;
-    bottom: -25px;
+    bottom: -24px;
   }
   .upl .bbn {
-    height: 36px;
+    height: 37px;
+    border: 1px solid #C0C4CC;
   }
   .layout .top .right .user {
     position: absolute;

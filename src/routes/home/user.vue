@@ -42,7 +42,7 @@
     </div>
     <div class="cont-right card">
       <div class="top">
-        <span class="title">知识推荐</span>
+        <span class="title">{{ title }}</span>
       </div>
       <ul class="list-info">
         <li v-for="item in dataList" :key="item.id">
@@ -73,6 +73,7 @@ export default {
   name: 'user',
   data () {
     return {
+      title: '我的文档',
       user: {},
       categoryData: [],
       type: 5,
@@ -108,6 +109,10 @@ export default {
     getDataList (index, type) {
       this.pageIndex = index || 1
       this.type = type
+      if (type === 5) this.title = '我的文档'
+      if (type === 3) this.title = '我的收藏'
+      if (type === 2) this.title = '我的下载'
+      if (type === 1) this.title = '我的浏览'
       this.$service.document.getUserDocumentListByType({
         type: type,
         pageIndex: index,
@@ -122,6 +127,7 @@ export default {
     getDataList2 (index) {
       this.pageIndex = index || 1
       this.type = 4
+      this.title = '部门文档'
       this.$service.document.getDocumentListByDepartment({
         pageIndex: index,
         pageSize: 50

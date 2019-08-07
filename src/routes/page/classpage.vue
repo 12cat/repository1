@@ -15,7 +15,7 @@
     </div>
     <div class="cont-right card">
       <div class="top">
-        <span class="title">类目名称</span>
+        <span class="title">{{ title }}</span>
         <span class="rl mar-t-8">
           <el-input placeholder="请输入关键字" v-model="content" class="input-with-select w245">
             <el-button slot="append" class="right-btn" @click="getDataList(1)">搜索</el-button>
@@ -47,6 +47,7 @@ export default {
   name: 'home',
   data () {
     return {
+      title: '',
       content: '',
       category: '',
       categoryData: [],
@@ -94,6 +95,7 @@ export default {
     categoryChange (item) {
       this.pageIndex = 1
       this.category = item.id
+      this.title = item.name
       this.$service.document.getDocumentListByCategory({
         content: '',
         category: this.category,
@@ -113,6 +115,7 @@ export default {
   watch: {
     '$route.path': function (newVal, oldVal) {
       this.category = this.$route.params.id
+      this.title = this.$store.state.classpage.categoryName
       this.getCategoryData()
       this.getDataList(1)
     }
