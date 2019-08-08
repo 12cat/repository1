@@ -48,7 +48,7 @@
         <li v-for="item in dataList" :key="item.id">
           <span class="list" @click="toDetails(item.id)">{{ item.title }}</span>
           <span class="info">
-            {{ item.categoryName }}
+            {{ item.categoryName | cut2str(4) }}
             <span>{{ item.createTime | ymd }}</span>
           </span>
           <span class="edit" v-show="type === 5" @click="toEdit(item.id)">编辑</span>
@@ -161,7 +161,7 @@ export default {
 <style scoped>
 .cont {
   position: relative;
-  min-height: 1200px;
+  min-height: 1500px;
 }
 .cont .card .li {
   width: 300px;

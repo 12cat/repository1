@@ -272,13 +272,21 @@ a {text-decoration: none;}
   border: none;
 }
 .card .cont .title {
-  font-size: 14px;
+  font-size: 16px;
+  font-weight: bolder;
   color: #666;
 }
 .card .cont .list span {
+  margin: 5px 5px 0 0;
+  font-size: 13px;
   display: inline-block;
   min-width: 50px;
   color: #999;
+}
+
+.el-form-item.is-must .el-form-item__label::before {
+  content: '* ';
+  color: red;
 }
 
 /* 卡片选择 tab */
@@ -292,9 +300,9 @@ a {text-decoration: none;}
 }
 .card .top .tab li {
   display: inline-block;
-  padding: 0 5px;
+  padding: 0 8px;
   line-height: 45px;
-  font-size: 14px;
+  font-size: 16px;
   color: #666;
   cursor: pointer;
 }
@@ -315,7 +323,7 @@ a {text-decoration: none;}
 }
 .card .list-info li .list {
   display: inline-block;
-  width: 430px;
+  width: 390px;
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
@@ -324,7 +332,7 @@ a {text-decoration: none;}
 .card .list-info li .info {
   position: absolute;
   margin-left: 30px;
-  width: 200px;
+  width: 140px;
   color: #999;
 }
 .card .list-info li .info span {

@@ -65,7 +65,10 @@
         <ul class="list-info">
           <li class="pointer" v-for="item in left1List" :key="item.id" @click="toDetails(item.id)">
             <span class="list">{{ item.title }}</span>
-            <span class="info">{{ item.categoryName.substring(0, 4) }}&nbsp;{{ item.createTime | ym }}</span>
+            <span class="info">
+              {{ item.categoryName | cut2str(4) }}
+              <span class="right">{{ item.createTime | ymd }}</span>
+            </span>
           </li>
         </ul>
       </div>
@@ -92,7 +95,10 @@
         <ul class="list-info">
           <li class="pointer" v-for="item in left2List" :key="item.id" @click="toDetails(item.id)">
             <span class="list">{{ item.title }}</span>
-            <span class="info">{{ item.categoryName.substring(0, 4) }}&nbsp;{{ item.createTime | ym }}</span>
+            <span class="info">
+              {{ item.categoryName | cut2str(4) }}
+              <span class="right">{{ item.createTime | ymd }}</span>
+            </span>
           </li>
         </ul>
       </div>

@@ -33,5 +33,13 @@ export default {
     } else {
       return ~~(val / 1024 / 1024) + 'G'
     }
+  },
+  // 超出……
+  cut2str (val, n) {
+    if (val.length > n) {
+      return val.substring(0, n) + '…'
+    } else {
+      return val
+    }
   }
 }

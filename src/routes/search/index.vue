@@ -45,7 +45,7 @@
             @click="toDetails(item.id)">
             <p>
               <span class="title hl" v-html="item.title"></span>
-              <span class="sub">{{ item.categoryName }}</span>
+              <span class="sub">{{ item.categoryName | cut2str(6) }}</span>
               <span class="date">{{ item.createTime | ymd }}</span>
             </p>
             <span class="hl" v-html="item.content"></span>

@@ -6,7 +6,7 @@
     <ul class="form">
       <li class="mar-t20" v-for="(item, i) in param" :key="i">
         <div class="upload">
-          <el-upload class="upload-demo w560"
+          <el-upload class="upload-demo w560" :ref="'upload' + i"
             :num="i"
             :action="$store.state.common.uploadPath"
             :file-list="item.fileList"
@@ -16,10 +16,10 @@
           </el-upload>
         </div>
         <el-form :inline="true" label-width="100px" class="demo-form-inline">
-          <el-form-item label="文章标题">
+          <el-form-item class="is-must" label="标题">
             <el-input class="w1000" v-model="item.title" placeholder=""></el-input>
           </el-form-item>
-          <el-form-item label="密级选择">
+          <el-form-item class="is-must" label="密级">
             <el-select class="w1000" v-model="item.secrecy" placeholder="请选择">
               <el-option v-for="item in secrecyList" :key="item.value"
                 :label="item.name"
@@ -27,17 +27,17 @@
               </el-option>
             </el-select>
           </el-form-item>
-          <el-form-item label="类目选择">
+          <el-form-item class="is-must" label="类目">
             <el-cascader class="w1000" :options="getCategoryData"
-              v-model="item.category"
+              v-model="item.category2"
               change-on-select
               :props="propsList">
             </el-cascader>
           </el-form-item>
-          <el-form-item label="文章标签">
+          <el-form-item class="is-must" label="标签">
             <el-input class="w1000" v-model="item.tags" placeholder=""></el-input>
           </el-form-item>
-          <el-form-item label=" ">
+          <el-form-item label="简介">
             <el-input class="w1000" type="textarea" v-model="item.introduction"></el-input>
           </el-form-item>
         </el-form>
@@ -78,7 +78,8 @@ export default {
           public: 1, // 1公共文档，0部门文档
           title: '', // 标题
           tags: '', // 逗号分隔
-          category: '', // 类目
+          category: [], // 类目
+          category2: [], // 类目
           secrecy: '', // 保密等级
           saveDraft: 0, // 是否草稿
           fileList: []
@@ -111,7 +112,7 @@ export default {
         this.arr = []
         this.flag = true
         this.dist(this.param[0].category, this.getCategoryData)
-        this.param[0].category = this.arr
+        this.param[0].category2 = this.arr
         this.dialog = true
       })
     },
@@ -141,6 +142,7 @@ export default {
     },
     uploadFile (res, file) {
       if (res.data) {
+        this.$refs['upload' + this.num].clearFiles()
         setTimeout(() => {
           this.param[this.num].name = res.data.name
           this.param[this.num].path = res.data.path
@@ -152,9 +154,27 @@ export default {
     uplodaDocument (saveDraft) {
       let n, i
       for (i = 0; i < this.param.length; i++) {
-        n = this.param[i].category.length
-        this.param[i].category = this.param[i].category[n - 1]
-        this.param[i].saveDraft = saveDraft
+        if (this.param[i].category2) {
+          n = this.param[i].category2.length
+          this.param[i].category = this.param[i].category2[n - 1]
+          this.param[i].saveDraft = saveDraft
+        }
+        if (!this.param[i].title) {
+          this.$message.warning('请填写标题！')
+          return
+        }
+        if (!this.param[i].secrecy) {
+          this.$message.warning('清选择密级！')
+          return
+        }
+        if (!this.param[i].category) {
+          this.$message.warning('清选择类目！')
+          return
+        }
+        if (!this.param[i].tags) {
+          this.$message.warning('请填写标签！')
+          return
+        }
       }
       this.$service.document.uploadDocument(
         this.param
@@ -190,7 +210,8 @@ export default {
         public: 1, // 1公共文档，0部门文档
         title: '', // 标题
         tags: '', // 逗号分隔
-        category: '', // 类目
+        category: [], // 类目
+        category2: [],
         secrecy: '', // 保密等级
         saveDraft: 0, // 是否草稿
         fileList: []

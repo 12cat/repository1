@@ -2,7 +2,7 @@
   <div id="login">
     <div class="background"></div>
     <div class="content">
-      <div class="top">KMS后台管理系统</div>
+      <div class="top">长城华冠KMP管理平台</div>
       <el-form ref="form" label-width="103px">
         <el-form-item label="登录账号">
           <el-input v-model="username"></el-input>

@@ -22,8 +22,26 @@
         <a class="btn" :href="$store.state.common.apiPath + 'document/downloadDocument?id=' + data.id" target="_blank"><i class="el-icon-download"></i>下载</a>
       </div>
       <div class="view">
-        <img v-if="['jpg', 'png'].indexOf(data.type) >= 0" :src="data.path">
-        <iframe v-else :src="'/asset/pdfjs/web/viewer.html?file=/document/getPreDocument/' + data.id" frameborder="0"></iframe>
+        <div class="view-box" v-if="['jpg', 'jpeg', 'png'].indexOf(data.type) >= 1">
+          <img :src="data.path">
+        </div>
+        <div class="view-box" v-else-if="data.type === 'mp4'">
+          <video type="video/mp4" :src="data.path"
+            width="740" height="555" controls="controls">
+            <h1><i class="el-icon-document"></i>{{ data.fileName }}.{{ data.type }}</h1>
+          </video>
+        </div>
+        <div class="view-box" v-else-if="data.type === 'mp3'">
+          <audio :src="data.path" width="740" controls="controls">
+            <h1><i class="el-icon-document"></i>{{ data.fileName }}.{{ data.type }}</h1>
+          </audio>
+        </div>
+        <div class="view-box" v-else-if="['doc', 'docx', 'xls', 'xlsx', 'ppt', 'pptx', 'pdf'].indexOf(data.type) >= 1">
+          <iframe :src="'/asset/pdfjs/web/viewer.html?file=/document/getPreDocument/' + data.id" frameborder="0"></iframe>
+        </div>
+        <div class="view-box" v-else>
+          <div><h1><i class="el-icon-document"></i>{{ data.fileName }}.{{ data.type }}</h1></div>
+        </div>
       </div>
     </div>
   </div>
@@ -135,7 +153,9 @@ export default {
   height: 1200px;
   padding: 20px;
 }
-.cont-left .view img,
+.cont-left .view img {
+  width: 740px;
+}
 .cont-left .view iframe {
   width: 740px;
   height: 1160px;
@@ -154,5 +174,12 @@ export default {
   top: -2px; left: -25px;
   font-size: 22px;
   line-height: 25px;
+}
+.view-box h1 {
+  font-size: 24px;
+}
+.view-box h1 i {
+  margin-right: 5px;
+  font-size: 24px;
 }
 </style>
