@@ -22,25 +22,30 @@
         <a class="btn" :href="$store.state.common.apiPath + 'document/downloadDocument?id=' + data.id" target="_blank"><i class="el-icon-download"></i>下载</a>
       </div>
       <div class="view">
-        <div class="view-box" v-if="['jpg', 'jpeg', 'png'].indexOf(data.type) >= 1">
-          <img :src="data.path">
+        <div class="view-box" v-if="!flag">
+          <span class="sorry">抱歉，您没有查看次文档的权限！</span>
         </div>
-        <div class="view-box" v-else-if="data.type === 'mp4'">
-          <video type="video/mp4" :src="data.path"
-            width="740" height="555" controls="controls">
-            <h1><i class="el-icon-document"></i>{{ data.fileName }}.{{ data.type }}</h1>
-          </video>
-        </div>
-        <div class="view-box" v-else-if="data.type === 'mp3'">
-          <audio :src="data.path" width="740" controls="controls">
-            <h1><i class="el-icon-document"></i>{{ data.fileName }}.{{ data.type }}</h1>
-          </audio>
-        </div>
-        <div class="view-box" v-else-if="['doc', 'docx', 'xls', 'xlsx', 'ppt', 'pptx', 'pdf'].indexOf(data.type) >= 1">
-          <iframe :src="'/asset/pdfjs/web/viewer.html?file=/document/getPreDocument/' + data.id" frameborder="0"></iframe>
-        </div>
-        <div class="view-box" v-else>
-          <div><h1><i class="el-icon-document"></i>{{ data.fileName }}.{{ data.type }}</h1></div>
+        <div v-if="flag">
+          <div class="view-box" v-if="['jpg', 'jpeg', 'png'].indexOf(data.type) >= 1">
+            <img :src="data.path">
+          </div>
+          <div class="view-box" v-else-if="data.type === 'mp4'">
+            <video type="video/mp4" :src="data.path"
+              width="740" height="555" controls="controls">
+              <h1><i class="el-icon-document"></i>{{ data.fileName }}.{{ data.type }}</h1>
+            </video>
+          </div>
+          <div class="view-box" v-else-if="data.type === 'mp3'">
+            <audio :src="data.path" width="740" controls="controls">
+              <h1><i class="el-icon-document"></i>{{ data.fileName }}.{{ data.type }}</h1>
+            </audio>
+          </div>
+          <div class="view-box" v-else-if="['doc', 'docx', 'xls', 'xlsx', 'ppt', 'pptx', 'pdf'].indexOf(data.type) >= 1">
+            <iframe :src="'/asset/pdfjs/web/viewer.html?file=/document/getPreDocument/' + data.id" frameborder="0"></iframe>
+          </div>
+          <div class="view-box" v-else>
+            <div><h1><i class="el-icon-document"></i>{{ data.fileName }}.{{ data.type }}</h1></div>
+          </div>
         </div>
       </div>
     </div>
@@ -53,6 +58,7 @@ export default {
   data () {
     return {
       id: 0,
+      flag: true,
       data: {
         fileName: ''
       },
@@ -76,6 +82,9 @@ export default {
             this.data.fileName = this.data.fileName.substring(0, 30) + '...'
           }
           this.getList2()
+          this.flag = true
+        } else {
+          this.flag = false
         }
       })
     },
@@ -181,5 +190,14 @@ export default {
 .view-box h1 i {
   margin-right: 5px;
   font-size: 24px;
+}
+.sorry {
+  display: block;
+  margin-top: 50px;
+  padding: 50px;
+  font-size: 25px;
+  border: 2px solid #aaa;
+  text-align: center;
+  color: #aaa;
 }
 </style>
