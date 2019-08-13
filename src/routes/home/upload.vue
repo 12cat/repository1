@@ -244,7 +244,7 @@ export default {
   border-left: 4px solid #842726;
 }
 .form > li {
-  border-bottom: 1px solid #ccc;
+  border-bottom: 1px solid #DCDFE6;
 }
 .upload {
   background-color: #fafafa;

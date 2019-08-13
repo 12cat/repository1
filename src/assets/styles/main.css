@@ -227,7 +227,7 @@ a {text-decoration: none;}
 /* 卡片样式 */
 .card {
   overflow: hidden;
-  border: 1px solid #ccc;
+  border: 1px solid #DCDFE6;
   border-radius: 5px;
   padding: 14px;
 }

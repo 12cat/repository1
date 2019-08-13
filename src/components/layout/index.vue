@@ -222,11 +222,16 @@ export default {
     height: 60px;
     width: 40px;
     right: -45px;
-    bottom: -24px;
+    bottom: -25px;
   }
   .upl .bbn {
-    height: 37px;
-    border: 1px solid #C0C4CC;
+    height: 35px;
+    border: 1px solid #DCDFE6;
+    border-radius: 3px !important;
+  }
+  .el-input-group__append,
+  .el-input-group__prepend {
+    border-color: #DCDFE6 !important;
   }
   .layout .top .right .user {
     position: absolute;
@@ -286,6 +291,7 @@ export default {
     line-height: 20px;
   }
   .bbn {
-    height: 36px;
+    height: 33px;
+    border-radius: 0 3px 3px 0 !important;
   }
 </style>

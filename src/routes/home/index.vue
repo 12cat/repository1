@@ -302,7 +302,7 @@ export default {
   width: 620px;
   height: 365px;
   overflow: hidden;
-  border: 1px solid #ccc;
+  border: 1px solid #DCDFE6;
   border-radius: 5px;
 }
 .cont-top .cont-top-img .el-carousel,
@@ -317,7 +317,7 @@ export default {
   margin-left: 275px;
   width: 620px;
   height: 80px;
-  border: 1px solid #ccc;
+  border: 1px solid #DCDFE6;
   border-radius: 5px;
   cursor: pointer;
 }
