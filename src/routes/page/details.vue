@@ -23,7 +23,7 @@
       </div>
       <div class="view">
         <div class="view-box" v-if="!flag">
-          <span class="sorry">抱歉，您没有查看次文档的权限！</span>
+          <span class="sorry">抱歉，您没有查看此文档的权限！</span>
         </div>
         <div v-if="flag">
           <div class="view-box" v-if="['jpg', 'jpeg', 'png'].indexOf(data.type) >= 1">

@@ -11,6 +11,7 @@
             :action="$store.state.common.uploadPath"
             :file-list="item.fileList"
             :on-success="uploadFile">
+            <span>{{ item.name }}</span>
             <el-button class="w260" type="primary" @click="num = i">点击上传</el-button>
             <div slot="tip" class="el-upload__tip">支持格式：PPT，WORD，EXCEL，PDF，MP3，MP4，DWG，MPP，TXT</div>
           </el-upload>
@@ -142,13 +143,13 @@ export default {
     },
     uploadFile (res, file) {
       if (res.data) {
-        this.$refs['upload' + this.num].clearFiles()
-        setTimeout(() => {
-          this.param[this.num].name = res.data.name
-          this.param[this.num].path = res.data.path
-          this.param[this.num].size = res.data.size
-          this.param[this.num].type = res.data.type
-        }, 5)
+        this.param[this.num].name = res.data.name
+        this.param[this.num].path = res.data.path
+        this.param[this.num].size = res.data.size
+        this.param[this.num].type = res.data.type
+      } else {
+        if (res.errorCode === 3) this.$message.error('文件上传失败！')
+        this.$refs['upload' + this.num][0].clearFiles()
       }
     },
     uplodaDocument (saveDraft) {
@@ -173,6 +174,10 @@ export default {
         }
         if (!this.param[i].tags) {
           this.$message.warning('请填写标签！')
+          return
+        }
+        if (!this.param[i].path) {
+          this.$message.warning('请上传文档！')
           return
         }
       }
