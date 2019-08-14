@@ -26,7 +26,7 @@
           <span class="sorry">抱歉，您没有查看此文档的权限！</span>
         </div>
         <div v-if="flag">
-          <div class="view-box" v-if="['jpg', 'jpeg', 'png'].indexOf(data.type) >= 1">
+          <div class="view-box" v-if="['jpg', 'jpeg', 'png'].indexOf(data.type) >= 0">
             <img :src="data.path">
           </div>
           <div class="view-box" v-else-if="data.type === 'mp4'">
@@ -40,8 +40,11 @@
               <h1><i class="el-icon-document"></i>{{ data.fileName }}.{{ data.type }}</h1>
             </audio>
           </div>
-          <div class="view-box" v-else-if="['doc', 'docx', 'xls', 'xlsx', 'ppt', 'pptx', 'pdf'].indexOf(data.type) >= 1">
+          <div class="view-box" v-else-if="['doc', 'docx', 'xls', 'xlsx', 'ppt', 'pptx', 'pdf'].indexOf(data.type) >= 0">
             <iframe :src="'/asset/pdfjs/web/viewer.html?file=/document/getPreDocument/' + data.id" frameborder="0"></iframe>
+          </div>
+          <div class="view-box" v-else-if="['html', 'htm'].indexOf(data.type) >= 0">
+            <iframe :src="data.path" frameborder="0"></iframe>
           </div>
           <div class="view-box" v-else>
             <div><h1><i class="el-icon-document"></i>{{ data.fileName }}.{{ data.type }}</h1></div>
@@ -167,7 +170,7 @@ export default {
 }
 .cont-left .view iframe {
   width: 740px;
-  height: 1160px;
+  height: 1200px;
 }
 .cont-left .btn {
   position: relative;

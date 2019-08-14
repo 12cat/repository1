@@ -49,6 +49,14 @@ export default {
       component: () => import('@/routes/page/morepage2')
     },
     {
+      path: '/morepage3/:id',
+      name: 'morepage3',
+      meta: {
+        pathName: '长城华冠'
+      },
+      component: () => import('@/routes/page/morepage3')
+    },
+    {
       path: '/morepageInfo1/:id',
       name: 'morepageInfo1',
       meta: {

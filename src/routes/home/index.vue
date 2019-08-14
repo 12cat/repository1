@@ -50,6 +50,44 @@
       </div>
     </div>
 
+    <!-- 华冠体系 模块 -->
+    <div class="mar-t20 h375">
+      <div class="w590 h375 left card">
+        <div class="top">
+          <ul class="tab">
+            <li v-for="item in left2Data" :key="item.id" :class="{active: left2index === item.id}" @click="getLeft2List(item.id)">{{ item.name }}</li>
+          </ul>
+          <span class="rl" @click="toMorepage2(left2index)">更多>></span>
+        </div>
+        <ul class="list-info">
+          <li class="pointer" v-for="item in left2List" :key="item.id" @click="toDetails(item.id)">
+            <span class="list">{{ item.title }}</span>
+            <span class="info">
+              {{ item.categoryName | cut2str(4) }}
+              <span class="right">{{ item.createTime | ymd }}</span>
+            </span>
+          </li>
+        </ul>
+      </div>
+      <div class="w590 h375 right card">
+        <div class="top">
+          <ul class="tab">
+            <li v-for="item in left3Data" :key="item.id" :class="{active: left3index === item.id}" @click="getLeft3List(item.id)">{{ item.name }}</li>
+          </ul>
+          <span class="rl" @click="toMorepage3(left3index)">更多>></span>
+        </div>
+        <ul class="list-info">
+          <li class="pointer" v-for="item in left3List" :key="item.id" @click="toDetails(item.id)">
+            <span class="list">{{ item.title }}</span>
+            <span class="info">
+              {{ item.categoryName | cut2str(4) }}
+              <span class="right">{{ item.createTime | ymd }}</span>
+            </span>
+          </li>
+        </ul>
+      </div>
+    </div>
+
     <!-- 知识推荐 模块 -->
     <div class="mar-t20 h375">
       <div class="w590 h375 left card">
@@ -79,36 +117,6 @@
         </div>
         <div class="w560 h310 other">
           <img :src="urlList[0].src" width="560" height="310" alt="">
-        </div>
-      </div>
-    </div>
-
-    <!-- 华冠体系 模块 -->
-    <div class="mar-t20 h375">
-      <div class="w590 h375 left card">
-        <div class="top">
-          <ul class="tab">
-            <li v-for="item in left2Data" :key="item.id" :class="{active: left2index === item.id}" @click="getLeft2List(item.id)">{{ item.name }}</li>
-          </ul>
-          <span class="rl" @click="toMorepage2(left2index)">更多>></span>
-        </div>
-        <ul class="list-info">
-          <li class="pointer" v-for="item in left2List" :key="item.id" @click="toDetails(item.id)">
-            <span class="list">{{ item.title }}</span>
-            <span class="info">
-              {{ item.categoryName | cut2str(4) }}
-              <span class="right">{{ item.createTime | ymd }}</span>
-            </span>
-          </li>
-        </ul>
-      </div>
-      <div class="w590 h375 right card">
-        <div class="top">
-          <span class="title">{{ urlList[1].title }}</span>
-          <a :href="urlList[1].url" class="rl">更多>></a>
-        </div>
-        <div class="w560 h310 other">
-          <img :src="urlList[1].src" width="560" height="310" alt="">
         </div>
       </div>
     </div>
@@ -142,6 +150,10 @@ export default {
       left2List: [], // 左下2列表数据
       left2Data: [], // 左下2列表内容
 
+      left3index: 1, // 左下3列表 index
+      left3List: [], // 左下3列表数据
+      left3Data: [], // 左下3列表内容
+
       urlList: [{}, {}], // 共献图谱
 
       other: false
@@ -153,6 +165,7 @@ export default {
     this.getTZGG()
     this.getLeft1Data(4)
     this.getLeft2Data()
+    this.getLeft3Data()
     this.getUrlList()
   },
   methods: {
@@ -238,6 +251,32 @@ export default {
         }
       })
     },
+    // 获取企业标准tab数据
+    getLeft3Data () {
+      this.$service.category.getCategoryPage({
+        type: 7
+      }).then(res => {
+        if (res) {
+          this.left3Data = res
+          if (res.length > 0) {
+            this.getLeft3List(res[0].id)
+          }
+        }
+      })
+    },
+    // 获取企业标准列表
+    getLeft3List (id) {
+      this.left3index = id
+      this.$service.document.getDocumentListByCategory({
+        category: id,
+        pageIndex: 1,
+        pageSize: 10
+      }).then(res => {
+        if (res) {
+          this.left3List = res.data
+        }
+      })
+    },
     // 获取共献图谱
     getUrlList () {
       this.$service.other.getUrlList().then(res => {
@@ -261,6 +300,9 @@ export default {
     },
     toMorepage2 (id) {
       this.$router.push(`/morepage2/${id}`)
+    },
+    toMorepage3 (id) {
+      this.$router.push(`/morepage3/${id}`)
     },
     toMorepageInfo1 (id) {
       this.$router.push(`/morepageInfo1/${id}`)
