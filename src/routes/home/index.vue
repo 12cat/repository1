@@ -8,7 +8,7 @@
         <div class="cont" v-for="(item, index) in zsflList" :key="index">
           <div class="title">{{ item.name }}</div>
           <div class="list">
-            <span class="pointer" v-for="e in item.childs" :key="e.id" @click="toClasspage(e.id, e.name)">{{ e.name }}</span>
+            <span class="pointer" v-for="(e, i) in item.childs" :key="i" @click="toClasspage(e.id, e.name)">{{ e.name }}</span>
           </div>
         </div>
       </div>

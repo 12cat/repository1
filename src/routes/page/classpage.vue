@@ -15,7 +15,7 @@
     </div>
     <div class="cont-right card">
       <div class="top">
-        <span class="title">{{ title }}</span>
+        <span class="title">{{ title || $store.state.classpage.categoryName }}</span>
         <span class="rl mar-t-8">
           <el-input placeholder="请输入关键字" v-model="content" class="input-with-select w245">
             <el-button slot="append" class="right-btn" @click="getDataList(1)">搜索</el-button>
@@ -52,7 +52,6 @@ export default {
       category: '',
       categoryData: [],
       pageIndex: 1,
-      pageSize: 1,
       total: 0,
       dataList: [],
       defaultProps: {
@@ -84,7 +83,7 @@ export default {
         content: this.content,
         category: this.category,
         pageIndex: this.pageIndex,
-        pageSize: this.pageSize
+        pageSize: 50
       }).then(res => {
         if (res) {
           this.dataList = res.data
@@ -100,7 +99,7 @@ export default {
         content: '',
         category: this.category,
         pageIndex: this.pageIndex,
-        pageSize: this.pageSize
+        pageSize: 50
       }).then(res => {
         if (res) {
           this.dataList = res.data

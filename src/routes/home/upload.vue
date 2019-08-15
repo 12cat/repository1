@@ -20,14 +20,6 @@
           <el-form-item class="is-must" label="标题">
             <el-input class="w1000" v-model="item.title" placeholder=""></el-input>
           </el-form-item>
-          <el-form-item class="is-must" label="密级">
-            <el-select class="w1000" v-model="item.secrecy" placeholder="请选择">
-              <el-option v-for="item in secrecyList" :key="item.value"
-                :label="item.name"
-                :value="item.id">
-              </el-option>
-            </el-select>
-          </el-form-item>
           <el-form-item class="is-must" label="类目">
             <el-cascader class="w1000" :options="getCategoryData"
               v-model="item.category2"
@@ -67,7 +59,6 @@ export default {
         label: 'name',
         children: 'childs'
       },
-      secrecyList: [], // 保密等级
       public: 1, // 1公共文档，0部门文档
       param: [
         {
@@ -81,7 +72,6 @@ export default {
           tags: '', // 逗号分隔
           category: [], // 类目
           category2: [], // 类目
-          secrecy: '', // 保密等级
           saveDraft: 0, // 是否草稿
           fileList: []
         }
@@ -93,7 +83,6 @@ export default {
   mounted () {
     this.id = this.$route.params.id
     this.getgetCategoryData()
-    this.getSecrecyList()
   },
   methods: {
     editDocument () {
@@ -102,7 +91,6 @@ export default {
       }).then(res => {
         this.param[0].id = res.id
         this.param[0].title = res.title
-        this.param[0].secrecy = res.secrecy
         this.param[0].category = res.category
         this.param[0].tags = res.tags
         this.param[0].introduction = res.introduction
@@ -125,12 +113,6 @@ export default {
         else this.flag && this.dist(id, list[i].childs)
       }
       this.flag && this.arr.splice(-1, 1)
-    },
-    // 获取保密等级
-    getSecrecyList () {
-      this.$service.user.getSecrecyList().then(res => {
-        this.secrecyList = res || []
-      })
     },
     getgetCategoryData () {
       this.$service.category.getUploadCategoryList({
@@ -164,10 +146,6 @@ export default {
           this.$message.warning('请填写标题！')
           return
         }
-        if (!this.param[i].secrecy) {
-          this.$message.warning('清选择密级！')
-          return
-        }
         if (!this.param[i].category) {
           this.$message.warning('清选择类目！')
           return
@@ -197,7 +175,6 @@ export default {
               title: '', // 标题
               tags: '', // 逗号分隔
               category: '', // 类目
-              secrecy: '', // 保密等级
               saveDraft: 0, // 是否草稿
               fileList: []
             }
@@ -217,7 +194,6 @@ export default {
         tags: '', // 逗号分隔
         category: [], // 类目
         category2: [],
-        secrecy: '', // 保密等级
         saveDraft: 0, // 是否草稿
         fileList: []
       })

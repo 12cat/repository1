@@ -247,7 +247,8 @@ export default {
     display: block;
     width: 40px;
     height: 40px;
-    background: url('../../assets/image/user.png') no-repeat 0 0;
+    background: url('../../assets/image/user.jpeg') no-repeat 0 0;
+    background-size: 100% 100%;
   }
 
   /* content */

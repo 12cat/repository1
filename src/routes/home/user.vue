@@ -6,7 +6,7 @@
           <span class="title">我的主页</span>
         </div>
         <div class="info">
-            <img src="../../assets/image/userimg.png" alt="">
+            <img src="../../assets/image/user.jpeg" alt="">
             <div class="username">{{ user.name }}</div>
             <div class="classname">{{ user.departmentName }}</div>
             <el-button type="primary" class="w175" @click="toUpload">上传文档</el-button>
