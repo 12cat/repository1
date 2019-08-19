@@ -51,11 +51,11 @@
     <div class="bottom">
       <p>
         <ul>
-          <li><span class="title">总下载</span><span class="value">{{ statistics.download }}</span></li>
-          <li><span class="title">当日访问</span><span class="value">{{ statistics.dailyVisit }}</span></li>
-          <li><span class="title">在线人数</span><span class="value">{{ statistics.online }}</span></li>
-          <li><span class="title">总文档数</span><span class="value">{{ statistics.document }}</span></li>
-          <li><span class="title">当日累计登陆</span><span class="value">{{ statistics.dailyLogin }}</span></li>
+          <li><span class="title">文件总数</span><span class="value">{{ statistics.document }}</span></li>
+          <li><span class="title">累计下载数</span><span class="value">{{ statistics.download }}</span></li>
+          <li><span class="title">在线用户数</span><span class="value">{{ statistics.online }}</span></li>
+          <li><span class="title">日登录数</span><span class="value">{{ statistics.dailyLogin }}</span></li>
+          <li><span class="title">日浏览数</span><span class="value">{{ statistics.dailyLogin }}</span></li>
         </ul>
       </p>
       <p><span class="title">长城华冠©2015|法律信息|京ICP备14032945号-3</span></p>
