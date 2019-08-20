@@ -1,3 +1,4 @@
+import 'babel-polyfill'
 import axios from 'axios'
 import Vue from 'vue'
 
@@ -15,7 +16,7 @@ axios.interceptors.request.use(request => {
   return request
 }, error => {
   Vue.prototype.$message.error('ERROR: ' + error.toString())
-  return Promise.reject(error)
+  return error
 })
 
 // 影响拦截器，可以自定义 预处理内容

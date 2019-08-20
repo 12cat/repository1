@@ -18,8 +18,8 @@
       <div class="top">
         <span class="title">{{ data.fileName }}</span>
         <span class="gray f-16">（{{ data.size | n2s }}）</span>
-        <span class="btn" v-if="!flag" @click="collection"><i :class="{'el-icon-star-on':data.collection, 'el-icon-star-off':!data.collection}"></i>收藏</span>
-        <a class="btn" v-if="!flag" :href="$store.state.common.apiPath + 'document/downloadDocument?id=' + data.id" target="_blank"><i class="el-icon-download"></i>下载</a>
+        <span class="btn" v-if="flag" @click="collection"><i :class="{'el-icon-star-on':data.collection, 'el-icon-star-off':!data.collection}"></i>收藏</span>
+        <a class="btn" v-if="flag" :href="$store.state.common.apiPath + 'document/downloadDocument?id=' + data.id" target="_blank"><i class="el-icon-download"></i>下载</a>
       </div>
       <div class="view">
         <div class="view-box" v-if="!flag">
