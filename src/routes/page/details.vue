@@ -89,6 +89,8 @@ export default {
         } else {
           this.flag = false
         }
+      }).catch(err => {
+        this.$message.error(err)
       })
     },
     // 历史版本
@@ -99,6 +101,8 @@ export default {
         if (res) {
           this.list1 = res || []
         }
+      }).catch(err => {
+        this.$message.error(err)
       })
     },
     // 相关知识推荐
@@ -111,6 +115,8 @@ export default {
         if (res) {
           this.list2 = res.data
         }
+      }).catch(err => {
+        this.$message.error(err)
       })
     },
     // 收藏
@@ -122,6 +128,8 @@ export default {
         if (res) {
           this.data.collection = res || []
         }
+      }).catch(err => {
+        this.$message.error(err)
       })
     },
     // 收藏
@@ -132,6 +140,8 @@ export default {
         if (res) {
           this.$message.success('开始下载！')
         }
+      }).catch(err => {
+        this.$message.error(err)
       })
     },
     // 点击内容跳转到详情页

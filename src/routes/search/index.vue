@@ -123,6 +123,8 @@ export default {
             total: res.page.total
           })
         }
+      }).catch(err => {
+        this.$message.error(err)
       })
     },
     // 搜索俩个类目
@@ -130,10 +132,14 @@ export default {
       this.$service.category.getCategoryPage({type: 5}).then(res => {
         if (res) this.category1list = res || []
         this.category1list.splice(0, 0, {id: 0, name: '全部'})
+      }).catch(err => {
+        this.$message.error(err)
       })
       this.$service.category.getCategoryPage({type: 6}).then(res => {
         if (res) this.category2list = res || []
         this.category2list.splice(0, 0, {id: 0, name: '全部'})
+      }).catch(err => {
+        this.$message.error(err)
       })
     },
     // 相关知识推荐
@@ -146,6 +152,8 @@ export default {
         if (res) {
           this.otherList = res.page.data || []
         }
+      }).catch(err => {
+        this.$message.error(err)
       })
     },
     toDetails (id) {

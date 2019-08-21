@@ -175,6 +175,8 @@ export default {
         if (res) {
           this.slideList = res || []
         }
+      }).catch(err => {
+        this.$message.error(err)
       })
     },
     // 获取知识分类列表
@@ -185,6 +187,8 @@ export default {
         if (res) {
           this.zsflList = res || []
         }
+      }).catch(err => {
+        this.$message.error(err)
       })
     },
     // 获取通知公告列表
@@ -198,6 +202,8 @@ export default {
             this.getTZGGList(res[0].id)
           }
         }
+      }).catch(err => {
+        this.$message.error(err)
       })
     },
     getTZGGList (id) {
@@ -209,6 +215,8 @@ export default {
         if (res) {
           this.tzggList = res.data
         }
+      }).catch(err => {
+        this.$message.error(err)
       })
     },
 
@@ -223,6 +231,8 @@ export default {
         if (res) {
           this.left1List = res.data || []
         }
+      }).catch(err => {
+        this.$message.error(err)
       })
     },
     // 获取华冠体系tab数据
@@ -236,6 +246,8 @@ export default {
             this.getLeft2List(res[0].id)
           }
         }
+      }).catch(err => {
+        this.$message.error(err)
       })
     },
     // 获取华冠数据列表
@@ -249,6 +261,8 @@ export default {
         if (res) {
           this.left2List = res.data
         }
+      }).catch(err => {
+        this.$message.error(err)
       })
     },
     // 获取企业标准tab数据
@@ -262,6 +276,8 @@ export default {
             this.getLeft3List(res[0].id)
           }
         }
+      }).catch(err => {
+        this.$message.error(err)
       })
     },
     // 获取企业标准列表
@@ -275,6 +291,8 @@ export default {
         if (res) {
           this.left3List = res.data
         }
+      }).catch(err => {
+        this.$message.error(err)
       })
     },
     // 获取共献图谱
@@ -283,6 +301,8 @@ export default {
         if (res) {
           this.urlList = res
         }
+      }).catch(err => {
+        this.$message.error(err)
       })
     },
     toClasspage (id, name) {

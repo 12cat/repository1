@@ -97,6 +97,8 @@ export default {
         if (res) {
           this.categoryData = res
         }
+      }).catch(err => {
+        this.$message.error(err)
       })
     },
     getUserData () {
@@ -104,6 +106,8 @@ export default {
         if (res) {
           this.user = res
         }
+      }).catch(err => {
+        this.$message.error(err)
       })
     },
     getDataList (index, type) {
@@ -122,6 +126,8 @@ export default {
           this.dataList = res.data || []
           this.total = res.total
         }
+      }).catch(err => {
+        this.$message.error(err)
       })
     },
     getDataList2 (index) {
@@ -136,6 +142,8 @@ export default {
           this.dataList = res.data || []
           this.total = res.total
         }
+      }).catch(err => {
+        this.$message.error(err)
       })
     },
     getDataList3 (index) {

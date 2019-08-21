@@ -113,6 +113,8 @@ export default {
         if (res) {
           this.categoryList = res || []
         }
+      }).catch(err => {
+        this.$message.error(err)
       })
     },
     // 搜索
@@ -134,6 +136,8 @@ export default {
           })
           this.$router.push(`/search`)
         }
+      }).catch(err => {
+        this.$message.error(err)
       })
     },
 
@@ -153,6 +157,8 @@ export default {
         if (res) {
           this.categoryMenu = res || []
         }
+      }).catch(err => {
+        this.$message.error(err)
       })
     },
     toHome () {

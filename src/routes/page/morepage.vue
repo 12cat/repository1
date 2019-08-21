@@ -99,6 +99,8 @@ export default {
         this.data.dataList = res.data
         this.pageIndex = res.pageIndex
         this.total = res.total
+      }).catch(err => {
+        this.$message.error(err)
       })
     },
     getDataList1 () {
@@ -108,6 +110,8 @@ export default {
         pageSize: 10
       }).then(res => {
         this.data1.dataList = res.data
+      }).catch(err => {
+        this.$message.error(err)
       })
     },
     getDataList2 () {
@@ -117,6 +121,8 @@ export default {
         pageSize: 10
       }).then(res => {
         this.data2.dataList = res.data
+      }).catch(err => {
+        this.$message.error(err)
       })
     },
     getDataList3 () {
@@ -126,6 +132,8 @@ export default {
         pageSize: 10
       }).then(res => {
         this.data3.dataList = res.data
+      }).catch(err => {
+        this.$message.error(err)
       })
     },
     toMorepage (id) {

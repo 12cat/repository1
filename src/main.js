@@ -1,6 +1,5 @@
 // The Vue build version to load with the `import` command
 // (runtime-only or standalone) has been set in webpack.base.conf with an alias.
-import 'babel-polyfill'
 import Vue from 'vue'
 import App from './App'
 import router from './router'
@@ -35,6 +34,10 @@ for (let key in directive) {
 for (let key in filter) {
   Vue.filter(key, filter[key])
 }
+
+process.on('unhandledRejection', (reason, p) => {
+  console.log('Unhandled Rejection at: Promise', p, 'reason:', reason)
+})
 
 /* eslint-disable no-new */
 new Vue({

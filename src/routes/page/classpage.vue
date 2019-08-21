@@ -74,6 +74,8 @@ export default {
         if (res) {
           this.categoryData = res || []
         }
+      }).catch(err => {
+        this.$message.error(err)
       })
     },
     getDataList (pageIndex) {
@@ -89,6 +91,8 @@ export default {
           this.dataList = res.data
           this.total = res.total
         }
+      }).catch(err => {
+        this.$message.error(err)
       })
     },
     categoryChange (item) {
@@ -105,6 +109,8 @@ export default {
           this.dataList = res.data
           this.total = res.total
         }
+      }).catch(err => {
+        this.$message.error(err)
       })
     },
     toDetails (id) {

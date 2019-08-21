@@ -103,6 +103,8 @@ export default {
         this.dist(this.param[0].category, this.getCategoryData)
         this.param[0].category2 = this.arr
         this.dialog = true
+      }).catch(err => {
+        this.$message.error(err)
       })
     },
     dist (id, list) {
@@ -121,6 +123,8 @@ export default {
       }).then(res => {
         this.getCategoryData = res || []
         if (this.id) this.editDocument()
+      }).catch(err => {
+        this.$message.error(err)
       })
     },
     uploadFile (res, file) {
@@ -180,6 +184,8 @@ export default {
             }
           ]
         }
+      }).catch(err => {
+        this.$message.error(err)
       })
     },
     addModel () {

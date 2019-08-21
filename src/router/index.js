@@ -1,4 +1,3 @@
-import 'babel-polyfill'
 import Vue from 'vue'
 import Router from 'vue-router'
 
@@ -48,6 +47,8 @@ router.beforeEach((to, from, next) => {
     //     // 跳转登录页面（非vue路由页面, 开发环境的webpack server不支持与非server环境的页面交互）
     //     // window.location.href = '/login?' + to.fullPath
     //   }
-    // )
+    // ).catch(err => {
+    //   this.$message.error(err)
+    // })
   }
 })
