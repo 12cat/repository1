@@ -43,7 +43,7 @@
           <div class="view-box" v-else-if="['doc', 'docx', 'xls', 'xlsx', 'ppt', 'pptx', 'pdf'].indexOf(data.type) >= 0">
             <iframe :src="'/asset/pdfjs/web/viewer.html?file=/document/getPreDocument/' + data.id" frameborder="0"></iframe>
           </div>
-          <div class="view-box" v-else-if="['html', 'htm'].indexOf(data.type) >= 0">
+          <div class="view-box" v-else-if="['html', 'htm', 'txt'].indexOf(data.type) >= 0">
             <iframe :src="data.path" frameborder="0"></iframe>
           </div>
           <div class="view-box" v-else>
