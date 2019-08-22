@@ -97,18 +97,14 @@ export default {
         if (res) {
           this.categoryData = res
         }
-      }).catch(err => {
-        this.$message.error(err)
-      })
+      }).catch(_ => {})
     },
     getUserData () {
       this.$service.user.getUserInfo().then(res => {
         if (res) {
           this.user = res
         }
-      }).catch(err => {
-        this.$message.error(err)
-      })
+      }).catch(_ => {})
     },
     getDataList (index, type) {
       this.pageIndex = index || 1
@@ -126,9 +122,7 @@ export default {
           this.dataList = res.data || []
           this.total = res.total
         }
-      }).catch(err => {
-        this.$message.error(err)
-      })
+      }).catch(_ => {})
     },
     getDataList2 (index) {
       this.pageIndex = index || 1
@@ -142,9 +136,7 @@ export default {
           this.dataList = res.data || []
           this.total = res.total
         }
-      }).catch(err => {
-        this.$message.error(err)
-      })
+      }).catch(_ => {})
     },
     getDataList3 (index) {
       if (this.type === 4) {

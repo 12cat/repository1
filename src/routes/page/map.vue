@@ -42,9 +42,7 @@ export default {
         if (res) {
           this.categoryData = res
         }
-      }).catch(err => {
-        this.$message.error(err)
-      })
+      }).catch(_ => {})
     },
     handleNodeClick (data) {
       console.log(data)

@@ -48,9 +48,7 @@ export default {
           this.dialogVisible = false
           this.$router.push('/')
         }
-      }).catch(err => {
-        this.$message.error(err)
-      })
+      }).catch(_ => {})
     }
   }
 }

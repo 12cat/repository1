@@ -2,7 +2,7 @@ import axios from 'axios'
 import Vue from 'vue'
 
 axios.defaults.withCredentials = true
-axios.defaults.timeout = 999999999999
+axios.defaults.timeout = 99999
 axios({
   headers: {
     'Content-Type': 'application/x-www-form-urlencoded'

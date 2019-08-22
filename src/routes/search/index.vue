@@ -123,24 +123,18 @@ export default {
             total: res.page.total
           })
         }
-      }).catch(err => {
-        this.$message.error(err)
-      })
+      }).catch(_ => {})
     },
     // 搜索俩个类目
     getCategory2 () {
       this.$service.category.getCategoryPage({type: 5}).then(res => {
         if (res) this.category1list = res || []
         this.category1list.splice(0, 0, {id: 0, name: '全部'})
-      }).catch(err => {
-        this.$message.error(err)
-      })
+      }).catch(_ => {})
       this.$service.category.getCategoryPage({type: 6}).then(res => {
         if (res) this.category2list = res || []
         this.category2list.splice(0, 0, {id: 0, name: '全部'})
-      }).catch(err => {
-        this.$message.error(err)
-      })
+      }).catch(_ => {})
     },
     // 相关知识推荐
     getOtherList () {
@@ -152,9 +146,7 @@ export default {
         if (res) {
           this.otherList = res.page.data || []
         }
-      }).catch(err => {
-        this.$message.error(err)
-      })
+      }).catch(_ => {})
     },
     toDetails (id) {
       this.$router.push(`/details/${id}`)

@@ -99,9 +99,7 @@ export default {
         this.data.dataList = res.data
         this.pageIndex = res.pageIndex
         this.total = res.total
-      }).catch(err => {
-        this.$message.error(err)
-      })
+      }).catch(_ => {})
     },
     getDataList1 () {
       this.$service.document.getUserDocumentListByType({
@@ -110,9 +108,7 @@ export default {
         pageSize: 10
       }).then(res => {
         this.data1.dataList = res.data
-      }).catch(err => {
-        this.$message.error(err)
-      })
+      }).catch(_ => {})
     },
     getDataList2 () {
       this.$service.document.getUserDocumentListByType({
@@ -121,9 +117,7 @@ export default {
         pageSize: 10
       }).then(res => {
         this.data2.dataList = res.data
-      }).catch(err => {
-        this.$message.error(err)
-      })
+      }).catch(_ => {})
     },
     getDataList3 () {
       this.$service.document.getUserDocumentListByType({
@@ -132,9 +126,7 @@ export default {
         pageSize: 10
       }).then(res => {
         this.data3.dataList = res.data
-      }).catch(err => {
-        this.$message.error(err)
-      })
+      }).catch(_ => {})
     },
     toMorepage (id) {
       this.$router.push(`/morepage/${id}`)

@@ -175,9 +175,7 @@ export default {
         if (res) {
           this.slideList = res || []
         }
-      }).catch(err => {
-        this.$message.error(err)
-      })
+      }).catch(_ => {})
     },
     // 获取知识分类列表
     getZSFL () {
@@ -187,9 +185,7 @@ export default {
         if (res) {
           this.zsflList = res || []
         }
-      }).catch(err => {
-        this.$message.error(err)
-      })
+      }).catch(_ => {})
     },
     // 获取通知公告列表
     getTZGG () {
@@ -202,9 +198,7 @@ export default {
             this.getTZGGList(res[0].id)
           }
         }
-      }).catch(err => {
-        this.$message.error(err)
-      })
+      }).catch(_ => {})
     },
     getTZGGList (id) {
       this.$service.document.getDocumentListByCategory({
@@ -215,9 +209,7 @@ export default {
         if (res) {
           this.tzggList = res.data
         }
-      }).catch(err => {
-        this.$message.error(err)
-      })
+      }).catch(_ => {})
     },
 
     // 知识推荐获取数据列表
@@ -231,9 +223,7 @@ export default {
         if (res) {
           this.left1List = res.data || []
         }
-      }).catch(err => {
-        this.$message.error(err)
-      })
+      }).catch(_ => {})
     },
     // 获取华冠体系tab数据
     getLeft2Data () {
@@ -246,9 +236,7 @@ export default {
             this.getLeft2List(res[0].id)
           }
         }
-      }).catch(err => {
-        this.$message.error(err)
-      })
+      }).catch(_ => {})
     },
     // 获取华冠数据列表
     getLeft2List (id) {
@@ -261,9 +249,7 @@ export default {
         if (res) {
           this.left2List = res.data
         }
-      }).catch(err => {
-        this.$message.error(err)
-      })
+      }).catch(_ => {})
     },
     // 获取企业标准tab数据
     getLeft3Data () {
@@ -276,9 +262,7 @@ export default {
             this.getLeft3List(res[0].id)
           }
         }
-      }).catch(err => {
-        this.$message.error(err)
-      })
+      }).catch(_ => {})
     },
     // 获取企业标准列表
     getLeft3List (id) {
@@ -291,9 +275,7 @@ export default {
         if (res) {
           this.left3List = res.data
         }
-      }).catch(err => {
-        this.$message.error(err)
-      })
+      }).catch(_ => {})
     },
     // 获取共献图谱
     getUrlList () {
@@ -301,9 +283,7 @@ export default {
         if (res) {
           this.urlList = res
         }
-      }).catch(err => {
-        this.$message.error(err)
-      })
+      }).catch(_ => {})
     },
     toClasspage (id, name) {
       this.$store.commit('setCategoryName', name)

@@ -89,9 +89,7 @@ export default {
         } else {
           this.flag = false
         }
-      }).catch(err => {
-        this.$message.error(err)
-      })
+      }).catch(_ => {})
     },
     // 历史版本
     getList1 () {
@@ -101,9 +99,7 @@ export default {
         if (res) {
           this.list1 = res || []
         }
-      }).catch(err => {
-        this.$message.error(err)
-      })
+      }).catch(_ => {})
     },
     // 相关知识推荐
     getList2 () {
@@ -115,9 +111,7 @@ export default {
         if (res) {
           this.list2 = res.data
         }
-      }).catch(err => {
-        this.$message.error(err)
-      })
+      }).catch(_ => {})
     },
     // 收藏
     collection () {
@@ -128,9 +122,7 @@ export default {
         if (res) {
           this.data.collection = res || []
         }
-      }).catch(err => {
-        this.$message.error(err)
-      })
+      }).catch(_ => {})
     },
     // 收藏
     download () {
@@ -140,9 +132,7 @@ export default {
         if (res) {
           this.$message.success('开始下载！')
         }
-      }).catch(err => {
-        this.$message.error(err)
-      })
+      }).catch(_ => {})
     },
     // 点击内容跳转到详情页
     toDetail (id) {

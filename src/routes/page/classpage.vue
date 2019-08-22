@@ -74,9 +74,7 @@ export default {
         if (res) {
           this.categoryData = res || []
         }
-      }).catch(err => {
-        this.$message.error(err)
-      })
+      }).catch(_ => {})
     },
     getDataList (pageIndex) {
       this.pageIndex = pageIndex || 1
@@ -91,9 +89,7 @@ export default {
           this.dataList = res.data
           this.total = res.total
         }
-      }).catch(err => {
-        this.$message.error(err)
-      })
+      }).catch(_ => {})
     },
     categoryChange (item) {
       this.pageIndex = 1
@@ -109,9 +105,7 @@ export default {
           this.dataList = res.data
           this.total = res.total
         }
-      }).catch(err => {
-        this.$message.error(err)
-      })
+      }).catch(_ => {})
     },
     toDetails (id) {
       this.$router.push(`/details/${id}`)

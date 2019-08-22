@@ -62,9 +62,7 @@ export default {
         level: 100
       }).then(res => {
         this.categoryData = res || []
-      }).catch(err => {
-        this.$message.error(err)
-      })
+      }).catch(_ => {})
     },
     // 搜索
     seach () {
@@ -92,9 +90,7 @@ export default {
           })
           this.$router.push(`/search`)
         }
-      }).catch(err => {
-        this.$message.error(err)
-      })
+      }).catch(_ => {})
     }
   }
 }

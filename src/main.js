@@ -35,10 +35,6 @@ for (let key in filter) {
   Vue.filter(key, filter[key])
 }
 
-process.on('unhandledRejection', (reason, p) => {
-  console.log('Unhandled Rejection at: Promise', p, 'reason:', reason)
-})
-
 /* eslint-disable no-new */
 new Vue({
   el: '#app',

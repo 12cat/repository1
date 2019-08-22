@@ -77,9 +77,7 @@ export default {
           this.arr = res
           this.init()
         }
-      }).catch(err => {
-        this.$message.error(err)
-      })
+      }).catch(_ => {})
     },
     // 华冠体系
     init () {
@@ -119,9 +117,7 @@ export default {
         this.data.dataList = res.data
         this.pageIndex = res.pageIndex
         this.total = res.total
-      }).catch(err => {
-        this.$message.error(err)
-      })
+      }).catch(_ => {})
     },
     getDataList1 () {
       this.$service.document.getDocumentListByCategory({
@@ -130,9 +126,7 @@ export default {
         pageSize: 10
       }).then(res => {
         this.data1.dataList = res.data
-      }).catch(err => {
-        this.$message.error(err)
-      })
+      }).catch(_ => {})
     },
     getDataList2 () {
       this.$service.document.getDocumentListByCategory({
@@ -141,9 +135,7 @@ export default {
         pageSize: 10
       }).then(res => {
         this.data2.dataList = res.data
-      }).catch(err => {
-        this.$message.error(err)
-      })
+      }).catch(_ => {})
     },
     getDataList3 () {
       this.$service.document.getDocumentListByCategory({
@@ -152,9 +144,7 @@ export default {
         pageSize: 10
       }).then(res => {
         this.data3.dataList = res.data
-      }).catch(err => {
-        this.$message.error(err)
-      })
+      }).catch(_ => {})
     },
     toMorepage (id) {
       this.$router.push(`/morepage2/${id}`)

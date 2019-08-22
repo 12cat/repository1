@@ -14,9 +14,9 @@
             </el-select>
             <el-button slot="append" class="right-btn bbn" @click="seach">搜索</el-button>
           </el-input>
-          <span class="upl">
+          <div id="upl" class="upl">
             <el-button class="bbn" type="primary" @click="toUpload">上传文档</el-button>
-          </span>
+          </div>
           <el-dropdown @command="handleCommand">
             <span class="el-dropdown-link">
               <span class="user">
@@ -87,18 +87,29 @@ export default {
     }
   },
   mounted () {
+    this.myBrowser()
     this.getCategoryMenu()
     this.getCategoryList()
     this.getStatistics()
     this.userName = this.$cookies.get('userName')
   },
   methods: {
+    myBrowser () {
+      let userAgent = navigator.userAgent
+      let tag = false
+      userAgent.indexOf('Opera') > -1 && (tag = true)
+      userAgent.indexOf('Firefox') > -1 && (tag = true)
+      userAgent.indexOf('Chrome') > -1 && (tag = true)
+      if (!tag) {
+        document.getElementById('upl').style.bottom = '38px'
+      }
+    },
     logout () {
       this.$service.user.logout().then(res => {
         this.$cookies.remove('userName')
         this.userName = ''
         this.$router.push(`/login`)
-      })
+      }).catch(_ => {})
     },
     handleCommand (str) {
       if (str === 'b') this.toUser()
@@ -113,9 +124,7 @@ export default {
         if (res) {
           this.categoryList = res || []
         }
-      }).catch(err => {
-        this.$message.error(err)
-      })
+      }).catch(_ => {})
     },
     // 搜索
     seach () {
@@ -136,9 +145,7 @@ export default {
           })
           this.$router.push(`/search`)
         }
-      }).catch(err => {
-        this.$message.error(err)
-      })
+      }).catch(_ => {})
     },
 
     // 统计信息
@@ -147,7 +154,7 @@ export default {
         if (res) {
           this.statistics = res || []
         }
-      })
+      }).catch(_ => {})
     },
     // 首页导航换取类目
     getCategoryMenu () {
@@ -157,9 +164,7 @@ export default {
         if (res) {
           this.categoryMenu = res || []
         }
-      }).catch(err => {
-        this.$message.error(err)
-      })
+      }).catch(_ => {})
     },
     toHome () {
       this.$router.push('/')
@@ -225,10 +230,10 @@ export default {
   }
   .upl {
     position: absolute;
-    height: 60px;
-    width: 40px;
-    right: -45px;
-    bottom: -25px;
+    height: 0;
+    width: 0;
+    right: -5px;
+    bottom: 35px;
   }
   .upl .bbn {
     height: 35px;
