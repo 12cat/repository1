@@ -19,7 +19,7 @@
         <span class="title">{{ data.fileName }}</span>
         <span class="gray f-16">（{{ data.size | n2s }}）</span>
         <span class="btn" v-if="flag" @click="collection"><i :class="{'el-icon-star-on':data.collection, 'el-icon-star-off':!data.collection}"></i>收藏</span>
-        <a class="btn" v-if="flag" :href="$store.state.common.apiPath + 'document/downloadDocument?id=' + data.id" target="_blank"><i class="el-icon-download"></i>下载</a>
+        <a class="btn" v-if="flag && data.canDownload" :href="$store.state.common.apiPath + 'document/downloadDocument?id=' + data.id" target="_blank"><i class="el-icon-download"></i>下载</a>
       </div>
       <div class="view">
         <div class="view-box" v-if="!flag">
@@ -40,10 +40,10 @@
               <h1><i class="el-icon-document"></i>{{ data.fileName }}.{{ data.type }}</h1>
             </audio>
           </div>
-          <div class="view-box" v-else-if="['doc', 'docx', 'xls', 'xlsx', 'ppt', 'pptx', 'pdf'].indexOf(data.type) >= 0">
+          <div class="view-box" v-else-if="['doc', 'docx', 'xls', 'xlsx', 'ppt', 'pptx', 'pdf', 'txt'].indexOf(data.type) >= 0">
             <iframe :src="'/asset/pdfjs/web/viewer.html?file=/document/getPreDocument/' + data.id" frameborder="0"></iframe>
           </div>
-          <div class="view-box" v-else-if="['html', 'htm', 'txt'].indexOf(data.type) >= 0">
+          <div class="view-box" v-else-if="['html', 'htm'].indexOf(data.type) >= 0">
             <iframe :src="data.path" frameborder="0"></iframe>
           </div>
           <div class="view-box" v-else>

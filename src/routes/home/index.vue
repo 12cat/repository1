@@ -24,7 +24,7 @@
       <div class="cont-top-img">
         <el-carousel>
           <el-carousel-item v-for="item in slideList" :key="item.id">
-            <img :src="item.url">
+            <a :href="item.url" target="_blank"><img :src="item.src"></a>
           </el-carousel-item>
         </el-carousel>
       </div>
