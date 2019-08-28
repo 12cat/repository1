@@ -113,7 +113,7 @@
       <div class="w590 h375 right card">
         <div class="top">
           <span class="title">{{ urlList[0].title }}</span>
-          <a :href="urlList[0].url" class="rl">更多>></a>
+          <a :href="urlList[0].url" target="_blank" class="rl">更多>></a>
         </div>
         <div class="w560 h310 other">
           <img :src="urlList[0].src" width="560" height="310" alt="">
