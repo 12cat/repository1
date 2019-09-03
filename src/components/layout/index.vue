@@ -97,9 +97,11 @@ export default {
     myBrowser () {
       let userAgent = navigator.userAgent
       let tag = false
+      alert(userAgent)
       userAgent.indexOf('Opera') > -1 && (tag = true)
       userAgent.indexOf('Firefox') > -1 && (tag = true)
       userAgent.indexOf('Chrome') > -1 && (tag = true)
+      userAgent.indexOf('Safari') > -1 && (tag = true)
       if (!tag) {
         document.getElementById('upl').style.bottom = '38px'
       }
