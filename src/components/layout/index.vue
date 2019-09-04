@@ -97,7 +97,6 @@ export default {
     myBrowser () {
       let userAgent = navigator.userAgent
       let tag = false
-      alert(userAgent)
       userAgent.indexOf('Opera') > -1 && (tag = true)
       userAgent.indexOf('Firefox') > -1 && (tag = true)
       userAgent.indexOf('Chrome') > -1 && (tag = true)
