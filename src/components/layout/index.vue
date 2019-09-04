@@ -103,7 +103,17 @@ export default {
       userAgent.indexOf('Safari') > -1 && (tag = true)
       if (!tag) {
         document.getElementById('upl').style.bottom = '38px'
+        window.addEventListener('hashchange', () => {
+          let currentPath = window.location.hash.slice(1)
+          if (this.$route.path !== currentPath) this.$router.push(currentPath)
+        })
       }
+      document.addEventListener('keydown', e => {
+        if (e.keyCode === 80 && e.ctrlKey) {
+          e.preventDefault()
+          return false
+        }
+      }, false)
     },
     logout () {
       this.$service.user.logout().then(res => {
@@ -185,6 +195,11 @@ export default {
     },
     toUser () {
       this.$router.push('/user')
+    }
+  },
+  watch: {
+    $route (to, from) {
+      console.log(to.path)
     }
   }
 }
