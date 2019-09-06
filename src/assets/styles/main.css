@@ -318,7 +318,7 @@ a {text-decoration: none;}
 
 .card .list-info li {
   position: relative;
-  margin-top: 11px;
+  margin-top: 10px;
 }
 .card .list-info li .list::before {
   content: "· ";
