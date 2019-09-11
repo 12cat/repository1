@@ -218,7 +218,7 @@ export default {
       this.$service.document.getDocumentListByType({
         type: index,
         pageIndex: 1,
-        pageSize: 12
+        pageSize: 10
       }).then(res => {
         if (res) {
           this.left1List = res.data || []
@@ -244,7 +244,7 @@ export default {
       this.$service.document.getDocumentListByCategory({
         category: id,
         pageIndex: 1,
-        pageSize: 12
+        pageSize: 10
       }).then(res => {
         if (res) {
           this.left2List = res.data
@@ -270,7 +270,7 @@ export default {
       this.$service.document.getDocumentListByCategory({
         category: id,
         pageIndex: 1,
-        pageSize: 12
+        pageSize: 10
       }).then(res => {
         if (res) {
           this.left3List = res.data
