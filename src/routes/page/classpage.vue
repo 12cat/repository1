@@ -1,5 +1,5 @@
 <template>
-  <div class="cont">
+  <div class="cont classpage">
     <div class="cont-left card">
       <div class="top">
         <span class="title">{{ $store.state.classpage.categoryName }}</span>
@@ -131,6 +131,10 @@ export default {
   top: 0;
   left: 0;
   width: 370px;
+}
+.cont-left .cont {
+  max-height: 1000px;
+  overflow-y: auto;
 }
 .cont-right {
   margin-left: 390px;

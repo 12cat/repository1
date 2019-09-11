@@ -342,8 +342,12 @@ a {text-decoration: none;}
   float: right;
   line-height: 18px;
 }
+.title.hl b {
+  font-size: 14px;
+}
 .hl b {
   color: #842726 !important;
+  font-size: 12px;
 }
 
 .card .other {
@@ -361,4 +365,12 @@ a {text-decoration: none;}
 /* 幻灯片 */
 .el-carousel__container {
   height: 365px;
+}
+
+.classpage .el-tree-node__label {
+  display: block;
+  width: 340px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 }

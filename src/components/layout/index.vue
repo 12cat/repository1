@@ -7,12 +7,12 @@
       </div>
       <div class="right">
         <el-row>
-          <el-input placeholder="请输入关键字" v-model="content" class="input-with-select w420">
+          <el-input placeholder="请输入关键字" v-model="content" class="input-with-select w420" @keyup.enter.native="seach">
             <el-select class="w110" v-model="category" slot="prepend" placeholder="请选择">
               <el-option label="ALL" value=""></el-option>
               <el-option v-for="(item, i) in categoryList" :key="i" :label="item.name" :value="item.id">{{ item.name }}</el-option>
             </el-select>
-            <el-button slot="append" class="right-btn bbn" @click="seach">搜索</el-button>
+            <el-button slot="append" class="right-btn bbn" @keyup.enter.native="seach" @click="seach">搜索</el-button>
           </el-input>
           <div id="upl" class="upl">
             <el-button class="bbn" type="primary" @click="toUpload">上传文档</el-button>
@@ -109,11 +109,16 @@ export default {
         })
       }
       document.addEventListener('keydown', e => {
-        if (e.keyCode === 80 && e.ctrlKey) {
+        if (e.keyCode === 80) {
           e.preventDefault()
           return false
         }
       }, false)
+      document.onkeydown = () => {
+        if (window.event.keyCode === 80) {
+          window.event.returnValue = false
+        }
+      }
     },
     logout () {
       this.$service.user.logout().then(res => {
@@ -195,11 +200,6 @@ export default {
     },
     toUser () {
       this.$router.push('/user')
-    }
-  },
-  watch: {
-    $route (to, from) {
-      console.log(to.path)
     }
   }
 }

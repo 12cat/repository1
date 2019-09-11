@@ -171,6 +171,12 @@ export default {
   margin-right: 10px;
   font-weight: bolder;
 }
+.table .title {
+  font-weight: bolder;
+}
+.table ul li > span {
+  color: #666;
+}
 .cont-select .option {
   display: inline-block;
   padding: 0 10px;
