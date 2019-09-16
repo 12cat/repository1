@@ -73,6 +73,7 @@ export default {
   name: 'user',
   data () {
     return {
+      flag: 0,
       title: '我的文档',
       user: {},
       categoryData: [],
@@ -87,8 +88,13 @@ export default {
     }
   },
   mounted () {
+    this.flag = this.$route.params.type || 0
+    if (this.flag === '1') {
+      this.getDataList2(1)
+    } else {
+      this.getDataList(1, 5)
+    }
     this.getUserData()
-    this.getDataList(1, 5)
     this.getMyPageCategory()
   },
   methods: {

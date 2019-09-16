@@ -108,17 +108,6 @@ export default {
           if (this.$route.path !== currentPath) this.$router.push(currentPath)
         })
       }
-      document.addEventListener('keydown', e => {
-        if (e.keyCode === 80) {
-          e.preventDefault()
-          return false
-        }
-      }, false)
-      document.onkeydown = () => {
-        if (window.event.keyCode === 80) {
-          window.event.returnValue = false
-        }
-      }
     },
     logout () {
       this.$service.user.logout().then(res => {
@@ -199,7 +188,7 @@ export default {
       this.$router.push('/upload')
     },
     toUser () {
-      this.$router.push('/user')
+      this.$router.push('/user/0')
     }
   }
 }

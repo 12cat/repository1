@@ -33,7 +33,7 @@ export default {
       component: () => import('@/routes/home/upload')
     },
     {
-      path: 'user',
+      path: 'user/:type',
       name: 'user',
       meta: {
         pathName: '长城华冠'

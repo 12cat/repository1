@@ -37,13 +37,11 @@
           <span class="icon"></span>
           <span class="text">部门知识</span>
         </div>
-        <!-- <div @click="toMap"> -->
-        <div>
+        <div @click="toMap">
           <span class="icon"></span>
           <span class="text">图文审签</span>
         </div>
-        <!-- <div @click="toOthersearch"> -->
-        <div>
+        <div @click="toRMS">
           <span class="icon"></span>
           <span class="text">RMS</span>
         </div>
@@ -293,7 +291,7 @@ export default {
       this.$router.push('/othersearch')
     },
     toExamine () {
-      this.$router.push('/examine')
+      this.$router.push('/user/1')
     },
     toMorepage (id) {
       this.$router.push(`/morepage/${id}`)
@@ -314,7 +312,10 @@ export default {
       this.$router.push(`/details/${id}`)
     },
     toMap () {
-      this.$router.push(`/map`)
+      window.open('http://tuwen.ch-auto.com/main.do')
+    },
+    toRMS () {
+      // window.open('http://tuwen.ch-auto.com/main.do')
     }
   }
 }

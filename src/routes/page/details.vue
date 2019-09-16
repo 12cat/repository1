@@ -86,21 +86,6 @@ export default {
           if (this.data.fileName.length > 30) {
             this.data.fileName = this.data.fileName.substring(0, 30) + '...'
           }
-          setTimeout(() => {
-            let f1 = document.getElementById('iframe1')
-            let f2 = document.getElementById('iframe2')
-            let _iframe
-            f1 && (_iframe = f1)
-            f2 && (_iframe = f2)
-            if (_iframe) {
-              _iframe.contentWindow.addEventListener('keydown', e => {
-                if (e.keyCode === 32) {
-                  e.preventDefault()
-                  return false
-                }
-              }, false)
-            }
-          }, 1000)
           this.getList2()
           this.flag = true
         } else {
