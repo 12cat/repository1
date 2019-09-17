@@ -374,3 +374,11 @@ a {text-decoration: none;}
   white-space: nowrap;
   text-overflow: ellipsis;
 }
+
+.userpage .el-tree-node__label {
+  display: block;
+  width: 340px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}

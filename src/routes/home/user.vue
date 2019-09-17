@@ -1,5 +1,5 @@
 <template>
-  <div class="cont">
+  <div class="cont userpage">
     <div class="cont-left">
       <div class="card mar-b20 b-gray">
         <div class="top">
@@ -29,15 +29,17 @@
             </li>
         </ul>
       </div>
-      <div class="card mar-b20">
+      <div class="card">
         <div class="top">
           <span class="title">我的文档</span>
         </div>
-        <el-tree
-          node-key="id"
-          :data="categoryData"
-          :props="defaultProps">
-        </el-tree>
+        <div class="cont-box">
+          <el-tree
+            node-key="id"
+            :data="categoryData"
+            :props="defaultProps">
+          </el-tree>
+        </div>
       </div>
     </div>
     <div class="cont-right card">
@@ -177,6 +179,10 @@ export default {
   top: 0;
   left: 0;
   width: 250px;
+}
+.cont-box {
+  max-height: 780px;
+  overflow-y: auto;
 }
 .cont-left .info {
   height: 290px;
