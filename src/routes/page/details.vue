@@ -21,7 +21,7 @@
         <span class="btn" v-if="flag" @click="collection"><i :class="{'el-icon-star-on':data.collection, 'el-icon-star-off':!data.collection}"></i>收藏</span>
         <a class="btn" v-if="flag && data.canDownload" :href="$store.state.common.apiPath + 'document/downloadDocument?id=' + data.id" target="_blank"><i class="el-icon-download"></i>下载</a>
         <!-- <a class="btn" v-if="flag && ['html', 'htm', 'doc', 'docx', 'xls', 'xlsx', 'ppt', 'pptx', 'pdf', 'txt'].indexOf(data.type) >= 0"
-          :href="data.path" target="_blank">全屏</a> -->
+          :href="data.prePath" target="_blank">全屏</a> -->
       </div>
       <div class="view">
         <div class="view-box" v-if="!flag">
@@ -29,16 +29,16 @@
         </div>
         <div v-if="flag">
           <div class="view-box" v-if="['jpg', 'jpeg', 'png'].indexOf(data.type) >= 0">
-            <img :src="data.path">
+            <img :src="data.prePath">
           </div>
           <div class="view-box" v-else-if="data.type === 'mp4'">
-            <video type="video/mp4" :src="data.path"
+            <video type="video/mp4" :src="data.prePath"
               width="740" height="555" controls="controls">
               <h1><i class="el-icon-document"></i>{{ data.fileName }}.{{ data.type }}</h1>
             </video>
           </div>
           <div class="view-box" v-else-if="data.type === 'mp3'">
-            <audio :src="data.path" width="740" controls="controls">
+            <audio :src="data.prePath" width="740" controls="controls">
               <h1><i class="el-icon-document"></i>{{ data.fileName }}.{{ data.type }}</h1>
             </audio>
           </div>
@@ -46,7 +46,7 @@
             <iframe id="iframe1" :src="'/asset/pdfjs/web/viewer.html?file=/document/getPreDocument/' + data.id" frameborder="0"></iframe>
           </div>
           <div class="view-box" v-else-if="['html', 'htm'].indexOf(data.type) >= 0">
-            <iframe id="iframe2" :src="data.path" frameborder="0"></iframe>
+            <iframe id="iframe2" :src="data.prePath" frameborder="0"></iframe>
           </div>
           <div class="view-box" v-else>
             <div><h1><i class="el-icon-document"></i>{{ data.fileName }}.{{ data.type }}</h1></div>
